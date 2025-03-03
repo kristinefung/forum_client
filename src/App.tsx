@@ -3,7 +3,9 @@ import * as React from 'react';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
 import { AppBar, Drawer, List, ListSubheader, ListItem, ListItemButton, ListItemText, Box, Typography, Card, CardContent, IconButton, Toolbar } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
+import { Menu as MenuIcon } from '@mui/icons-material';
+
+import ThreadCard from './component/ThreadCard';
 
 import './App.css'
 import theme from '../theme'
@@ -39,15 +41,15 @@ const categoryGroups = [
 ]
 
 const threads = [
-  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: "2025-3-3", replies: 10 },
-  { title: "電車迷思 - 冇位差電？折舊快過油車？", createdBy: "ミニクーパーF55", createdAt: "2025-3-3", replies: 1 },
-  { title: "點樣解決迴旋處右轉關口", createdBy: "海狐", createdAt: "2025-3-3", replies: 42 },
-  { title: "救命！屋企隻貓成隻狗咁", createdBy: "元朗吉夫藥", createdAt: "2025-3-3", replies: 3 },
-  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: "2025-3-3", replies: 8 },
-  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: "2025-3-3", replies: 12 },
-  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: "2025-3-3", replies: 24 },
-  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: "2025-3-3", replies: 10 },
-  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: "2025-3-3", replies: 11 },
+  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: new Date("2025-3-3"), replies: 10 },
+  { title: "電車迷思 - 冇位差電？折舊快過油車？", createdBy: "ミニクーパーF55", createdAt: new Date("2025-3-3"), replies: 1 },
+  { title: "點樣解決迴旋處右轉關口", createdBy: "海狐", createdAt: new Date("2025-3-3"), replies: 42 },
+  { title: "救命！屋企隻貓成隻狗咁", createdBy: "元朗吉夫藥", createdAt: new Date("2025-3-3"), replies: 3 },
+  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: new Date("2025-3-3"), replies: 8 },
+  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: new Date("2025-3-3"), replies: 12 },
+  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: new Date("2025-3-3"), replies: 24 },
+  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: new Date("2025-3-3"), replies: 10 },
+  { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: new Date("2025-3-3"), replies: 11 },
 ]
 
 function App() {
@@ -73,7 +75,10 @@ function App() {
     <div>
       {
         <>
-          Forum
+          <Typography variant="h5" component="h5" sx={{ mt: 2, ml: 2 }} >
+            Forum
+          </Typography>
+
           <List>
             {categoryGroups.map((categoryGroup) => (
               <>
@@ -119,9 +124,9 @@ function App() {
             >
               <MenuIcon />
             </IconButton>
-            {/* <Typography variant="h6" noWrap component="div">
-              Responsive drawer
-            </Typography> */}
+            <Typography variant="h6" noWrap component="div">
+              健康台
+            </Typography>
           </Toolbar>
         </AppBar>
 
@@ -174,14 +179,12 @@ function App() {
 
             {
               threads.map(thread => (
-                <Card variant="outlined" sx={{ bgcolor: 'primary.main' }}>
-                  <CardContent>
-                    <div>{thread.title}</div>
-                    <div>{thread.createdBy}</div>
-                    <div>{thread.createdAt}</div>
-                    <div>{thread.replies}</div>
-                  </CardContent>
-                </Card>
+                <ThreadCard
+                  title={thread.title}
+                  createdBy={thread.createdBy}
+                  createdAt={thread.createdAt}
+                  replies={thread.replies}
+                />
               ))
 
             }
