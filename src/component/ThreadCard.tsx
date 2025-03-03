@@ -1,7 +1,9 @@
 import React from 'react';
 
-import { Card, Box, IconButton } from '@mui/material';
+import { Card, Box, IconButton, Tooltip } from '@mui/material';
 import { ChatBubble as ChatBubbleIcon } from '@mui/icons-material';
+
+import { convertDatetimeToTimeAgoString, convertDatetimeToString } from '../utils/common';
 
 interface ThreadCardProps {
     title: string;
@@ -25,11 +27,17 @@ const ThreadCard: React.FC<ThreadCardProps> = (props) => {
                     <Box> {props.createdBy} </Box>
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'end' }}>
-                    <Box> {props.createdAt.toDateString()} </Box>
+                    <Box>
+                        <Tooltip title={convertDatetimeToString(props.createdAt)} placement="bottom-end">
+                            <Box>
+                                {convertDatetimeToTimeAgoString(props.createdAt)}
+                            </Box>
+                        </Tooltip>
+                    </Box>
                     <Box>
                         <IconButton
                             color="inherit"
-                            sx={{ p: 0, pr: 0.5 }}
+                            sx={{ p: 0, pr: 0.5, cursor: 'default' }}
                         >
                             <ChatBubbleIcon sx={{ fontSize: 16 }} />
                         </IconButton>
