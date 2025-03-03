@@ -2,12 +2,14 @@ import * as React from 'react';
 
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
-import { Drawer, List, ListItem, ListItemButton, ListItemText, Box, Typography, Card, CardContent } from '@mui/material';
+import { AppBar, Drawer, List, ListSubheader, ListItem, ListItemButton, ListItemText, Box, Typography, Card, CardContent, IconButton, Toolbar } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import './App.css'
 import theme from '../theme'
 
 const drawerWidth = 240;
+const appbarHeight = 60;
 
 const categoryGroups = [
   {
@@ -70,22 +72,26 @@ function App() {
   const drawer = (
     <div>
       {
-        categoryGroups.map((categoryGroup) => (
-          <div>
-            <Typography >
-              {categoryGroup.name}
-            </Typography>
-            <List>
-              {categoryGroup.categories.map((category) => (
-                <ListItem disablePadding>
-                  <ListItemButton>
-                    <ListItemText primary={category.name} />
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-          </div>
-        ))
+        <>
+          Forum
+          <List>
+            {categoryGroups.map((categoryGroup) => (
+              <>
+                <ListSubheader sx={{ bgcolor: 'transparent', color: theme.palette.text.secondary }}>
+                  {categoryGroup.name}
+                </ListSubheader>
+                {categoryGroup.categories.map((category) => (
+                  <ListItem disablePadding>
+                    <ListItemButton>
+                      <ListItemText primary={category.name} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </>
+            ))}
+          </List>
+        </>
+
       }
 
     </div>
@@ -95,6 +101,30 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <AppBar
+          position="fixed"
+          sx={{
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+            height: appbarHeight,
+            ml: { sm: `${drawerWidth}px` },
+          }}
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            {/* <Typography variant="h6" noWrap component="div">
+              Responsive drawer
+            </Typography> */}
+          </Toolbar>
+        </AppBar>
+
         <Box sx={{ display: 'flex' }}>
           <Box
             component="nav"
@@ -140,7 +170,7 @@ function App() {
           </Box>
           <Box
             component="main"
-            sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
+            sx={{ flexGrow: 1, p: 3, mt: `${appbarHeight}px`, width: { sm: `calc(100% - ${drawerWidth}px)` } }}>
 
             {
               threads.map(thread => (

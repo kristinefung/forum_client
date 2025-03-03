@@ -22,7 +22,7 @@ const theme = createTheme({
         },
         text: {
             primary: '#ffffff',
-            secondary: '#6b0000',
+            secondary: '#8e8e8c',
             disabled: '#bdbdbd',
         },
     },
