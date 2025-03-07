@@ -90,7 +90,7 @@ const LoginDialog: React.FC<LoginDialogProps> = (props) => {
                         minWidth: "300px",
                         maxWidth: "600px",
                         height: "600px",
-                        backgroundColor: theme.palette.secondary.light,
+                        backgroundColor: theme.palette.secondary.main,
                     },
                 },
             }}
@@ -99,7 +99,7 @@ const LoginDialog: React.FC<LoginDialogProps> = (props) => {
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', height: '60px', backgroundColor: theme.palette.primary.dark, }}>
                     <Box sx={{
                         ...tabStyle,
-                        backgroundColor: formType === "LOGIN" ? theme.palette.secondary.light : theme.palette.primary.dark,
+                        backgroundColor: formType === "LOGIN" ? theme.palette.secondary.main : theme.palette.primary.dark,
                         color: formType === "LOGIN" ? theme.palette.secondary.contrastText : theme.palette.secondary.main,
                         fontWeight: 700,
                     }}
@@ -108,7 +108,7 @@ const LoginDialog: React.FC<LoginDialogProps> = (props) => {
                     </Box>
                     <Box sx={{
                         ...tabStyle,
-                        backgroundColor: formType === "REGISTER" ? theme.palette.secondary.light : theme.palette.primary.dark,
+                        backgroundColor: formType === "REGISTER" ? theme.palette.secondary.main : theme.palette.primary.dark,
                         color: formType === "REGISTER" ? theme.palette.secondary.contrastText : theme.palette.secondary.main,
                         fontWeight: 700,
                     }}

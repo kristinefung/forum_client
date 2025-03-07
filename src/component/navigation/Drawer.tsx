@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 
 import { Drawer as MuiDrawer, List, ListSubheader, ListItem, ListItemButton, ListItemText, Box, Typography } from '@mui/material';
 
@@ -41,13 +42,29 @@ interface DrawerProps {
 }
 
 const Drawer: React.FC<DrawerProps> = (props) => {
+    const navigate = useNavigate();
 
+    const handleOnClickHome = () => {
+        const path = `/`;
+        navigate(path);
+        props.handleDrawerClose();
+    }
+
+    const handleOnClickThread = () => {
+        const path = `/category`;
+        navigate(path);
+        props.handleDrawerClose();
+    }
 
     const drawer = (
         <div>
             {
                 <>
-                    <Typography variant="h5" component="h5" sx={{ mt: 2, ml: 3 }} >
+                    <Typography
+                        onClick={handleOnClickHome}
+                        variant="h5"
+                        component="h5"
+                        sx={{ mt: 2, ml: 3, cursor: 'pointer', color: theme.palette.secondary.light }} >
                         Forum
                     </Typography>
 
@@ -59,7 +76,8 @@ const Drawer: React.FC<DrawerProps> = (props) => {
                                 </ListSubheader>
                                 {categoryGroup.categories.map((category) => (
                                     <ListItem disablePadding>
-                                        <ListItemButton>
+                                        <ListItemButton
+                                            onClick={handleOnClickThread}>
                                             <ListItemText primary={category.name} />
                                         </ListItemButton>
                                     </ListItem>
