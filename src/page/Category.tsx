@@ -2,10 +2,10 @@ import React from 'react';
 
 import ThreadCard from '../component/data_display/ThreadCard';
 
-interface ThreadProps {
+interface CategoryProps {
 }
 
-const Thread: React.FC<ThreadProps> = (props) => {
+const Category: React.FC<CategoryProps> = (props) => {
 
     const threads = [
         { title: "MH 武器使用心得集中討論區", createdBy: "元朗吉夫藥", createdAt: new Date("2025-3-4 00:02:30"), replies: 10 },
@@ -35,4 +35,4 @@ const Thread: React.FC<ThreadProps> = (props) => {
     );
 }
 
-export default Thread;
+export default Category;
