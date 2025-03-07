@@ -9,67 +9,98 @@ const theme = createTheme({
             light: '#343434',
             main: '#292929',
             dark: '#232323',
-            contrastText: '#fff',
+            contrastText: '#d4d4d4',
         },
         secondary: { // Red
-            light: '#8e0000',
+            light: '#820000',
             main: '#dc143c',
-            dark: '#770e0e',
-            contrastText: '#fff',
+            dark: '#510b0b',
+            contrastText: '#d4d4d4',
         },
         background: {
             default: '#222222',
         },
         text: {
-            primary: '#ffffff',
+            primary: '#d4d4d4',
             secondary: '#8e8e8c',
             disabled: '#bdbdbd',
         },
     },
     components: {
-        MuiTextField: {
+        MuiFormControl: {
+            defaultProps: {
+                size: "small",
+            },
             styleOverrides: {
                 root: {
-                    margin: '14px',
-                    '& .MuiOutlinedInput-root': {
-                        '& input': {
-                            padding: '8px',
-                        },
-                        '& fieldset': {
-                            borderColor: '#343434',
-                            borderWidth: '1px',
-                        },
-                        '&:hover fieldset': {
-                            borderColor: '#d4d4d4',
-                        },
-                        '&.Mui-focused fieldset': {
-                            borderColor: '#d4d4d4',
-                            borderWidth: '1px',
-                        },
-                    },
+                    margin: '10px 0px',
+                }
+            }
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                root: {
+                    color: '#fff',
+                    backgroundColor: '#343434',
+                    // '&.Mui-disabled': {
+                    //   backgroundColor: '#e4e4e4',
+                    // },
                 },
             },
         },
-        MuiInputLabel: {
+        MuiTextField: {
+            defaultProps: {
+                size: "small",
+            }
+        },
+        MuiOutlinedInput: {
             styleOverrides: {
                 root: {
-                    '&.Mui-focused': {
-                        color: '#d4d4d4',
-                    }
+                    "& .MuiOutlinedInput-notchedOutline": {
+                        border: `2px solid #343434`,
+                    },
+                    "&.Mui-focused": {
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            border: `2px solid #232323`,
+                        },
+                    },
+                    "&:hover .MuiOutlinedInput-notchedOutline": {
+                        border: `2px solid #232323`,
+                    },
+
                 },
             }
         },
-        // MuiButton: {
-        //     styleOverrides: {
-        //         root: {
-        //             backgroundColor: 'green', // Style all buttons
-        //             color: 'white',
-        //             '&:hover': {
-        //                 backgroundColor: 'darkgreen', // Change color on hover
-        //             },
-        //         },
-        //     },
-        // },
+        MuiInputLabel: {
+            defaultProps: {
+                sx: {
+                    fontSize: "13px",
+                    top: 2,
+                },
+            },
+            styleOverrides: {
+                shrink: ({ ownerState, theme }) => ({
+                    ...(ownerState.shrink && {
+                        fontSize: "1rem !important",
+                        top: "-1 !important",
+                    }),
+                }),
+                root: {
+                    color: '#d4d4d4',
+                    "&.Mui-focused": {
+                        color: '#d4d4d4',
+                    }
+                }
+            },
+        },
+        MuiButton: {
+            styleOverrides: {
+                root: {
+                    margin: '10px 0px',
+
+                },
+            },
+        },
     }
 });
 export default theme;

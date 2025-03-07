@@ -8,7 +8,6 @@ import { useState } from 'react';
 
 interface TextFieldProps {
     label: string
-    adornmentIcon?: React.FC<SvgIconProps>
     tooltip?: React.ReactNode
 }
 
@@ -36,19 +35,7 @@ const TextField: React.FC<TextFieldProps> = (props) => {
             onFocus={handleFocus}
             onBlur={handleBlur}
             variant="outlined"
-            sx={{
-            }}
-            slotProps={{
-                input: {
-                    ...(props.adornmentIcon ? {
-                        startAdornment: (
-                            <InputAdornment position="start" sx={{ color: theme.palette.secondary.dark }}>
-                                {React.createElement(props.adornmentIcon)}
-                            </InputAdornment>
-                        ),
-                    } : {}),
-                },
-            }}
+            autoComplete='off'
         />
     );
 
