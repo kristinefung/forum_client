@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, Box, IconButton, Tooltip } from '@mui/material';
 import { ChatBubble as ChatBubbleIcon } from '@mui/icons-material';
 
-import { convertDatetimeToTimeAgoString, convertDatetimeToString } from '../utils/common';
+import { convertDatetimeToTimeAgoString, convertDatetimeToString } from '../../utils/common';
 
 interface ThreadCardProps {
     title: string;
