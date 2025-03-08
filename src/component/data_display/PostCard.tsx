@@ -6,7 +6,12 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import ReplyIcon from '@mui/icons-material/Reply';
 
-import { convertDatetimeToTimeAgoString, convertDatetimeToString } from '../../utils/common';
+import WarningIcon from '@mui/icons-material/Warning';
+import ShareIcon from '@mui/icons-material/Share';
+
+import MoreMenu from '../navigation/MoreMenu';
+
+import { convertDatetimeToString } from '../../utils/common';
 
 interface PostCardProps {
     index: number;
@@ -16,6 +21,19 @@ interface PostCardProps {
 }
 
 const PostCard: React.FC<PostCardProps> = (props) => {
+
+    const moreMenuItems = [
+        {
+            icon: <ShareIcon />,
+            text: '分享',
+            onClick: () => console.log('分享 clicked'),
+        },
+        {
+            icon: <WarningIcon />,
+            text: '檢舉',
+            onClick: () => console.log('檢舉 clicked'),
+        },
+    ];
 
     return (
         <Card variant="outlined" sx={{
@@ -29,7 +47,9 @@ const PostCard: React.FC<PostCardProps> = (props) => {
                         <Box> {`#${props.index} ${props.createdBy}`} </Box>
                         <Box>{`發表於 ${convertDatetimeToString(props.createdAt)}`}</Box>
                     </Box>
-                    <Box>{convertDatetimeToTimeAgoString(props.createdAt)}</Box>
+                    <Box>
+                        <MoreMenu items={moreMenuItems} />
+                    </Box>
                 </Box>
                 <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                     <Box> {props.content} </Box>
