@@ -7,6 +7,7 @@ import { CssBaseline } from '@mui/material';
 import Layout from './component/navigation/Layout';
 import Home from './page/Home';
 import Category from './page/Category';
+import Thread from './page/Thread';
 
 import theme from '../theme'
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
               <Route path="category" element={<Category />} />
+              <Route path="thread" element={<Thread />} />
             </Route>
           </Routes>
         </Router>

@@ -10,43 +10,46 @@ interface ThreadCardProps {
     createdBy: string;
     createdAt: Date;
     replies: number;
+    handleOnClickThread: () => void;
 }
 
 const ThreadCard: React.FC<ThreadCardProps> = (props) => {
 
     return (
-
-        <Card variant="outlined" sx={{
-            bgcolor: 'primary.main',
-            p: 2,
-        }
-        }>
-            <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <Box>{props.title} </Box>
-                    <Box> {props.createdBy} </Box>
-                </Box>
-                <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'end' }}>
-                    <Box>
-                        <Tooltip title={convertDatetimeToString(props.createdAt)} placement="bottom-end">
-                            <Box>
-                                {convertDatetimeToTimeAgoString(props.createdAt)}
-                            </Box>
-                        </Tooltip>
+        <div onClick={props.handleOnClickThread}>
+            <Card variant="outlined" sx={{
+                bgcolor: 'primary.main',
+                p: 2,
+                cursor: "pointer"
+            }}
+            >
+                <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                        <Box>{props.title} </Box>
+                        <Box> {props.createdBy} </Box>
                     </Box>
-                    <Box>
-                        <IconButton
-                            color="inherit"
-                            sx={{ p: 0, pr: 0.5, cursor: 'default' }}
-                        >
-                            <ChatBubbleIcon sx={{ fontSize: 16 }} />
-                        </IconButton>
-                        {props.replies.toString()}
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'end' }}>
+                        <Box>
+                            <Tooltip title={convertDatetimeToString(props.createdAt)} placement="bottom-end">
+                                <Box>
+                                    {convertDatetimeToTimeAgoString(props.createdAt)}
+                                </Box>
+                            </Tooltip>
+                        </Box>
+                        <Box>
+                            <IconButton
+                                color="inherit"
+                                sx={{ p: 0, pr: 0.5, cursor: 'default' }}
+                            >
+                                <ChatBubbleIcon sx={{ fontSize: 16 }} />
+                            </IconButton>
+                            {props.replies.toString()}
+                        </Box>
                     </Box>
-                </Box>
 
-            </Box>
-        </Card>
+                </Box>
+            </Card>
+        </div>
     );
 }
 
